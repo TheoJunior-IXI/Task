@@ -10,7 +10,7 @@ class BankAccount {
   // withdraw method
   void withdraw(double amount) {
 
-    if (amount < _balance) {
+    if (amount < _balance && amount<= 0) {
       throw NegativeBalanceException('Amount must be Positive.');
     }
     if (amount > _balance) {
@@ -48,11 +48,13 @@ void main() {
     myAccount.DisplayBalance();
   }
   try {
-    myAccount.withdraw(-6000);
+    myAccount.withdraw(-600);
     myAccount.DisplayBalance();
 
   } on NegativeBalanceException catch (e) {
     print(e.message2);
     myAccount.DisplayBalance();
   }
+  myAccount.withdraw(2000);
+  myAccount.DisplayBalance();
 }
